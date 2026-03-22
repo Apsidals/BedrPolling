@@ -16,7 +16,7 @@ h2 {
   margin-top: 24px;
 }
 
-input {
+input[type="text"], input:not([type="radio"]) {
   width: 400px;
   padding: 7px;
   margin: 6px 0;
