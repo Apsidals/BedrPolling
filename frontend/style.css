@@ -3,15 +3,7 @@ body {
   background: #f9f9f9;
   color: #222;
   margin: 0;
-  padding: 40px 20px;
-}
-
-#container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fff;
   padding: 30px;
-  border: 1px solid #ddd;
 }
 
 h1 {
@@ -25,11 +17,12 @@ h2 {
 }
 
 input {
-  width: 100%;
+  width: 400px;
   padding: 7px;
   margin: 6px 0;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  display: block;
 }
 
 button {
@@ -48,6 +41,14 @@ button:hover {
   border: 1px solid #ddd;
   padding: 12px;
   margin: 10px 0;
+  max-width: 500px;
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
 }
 
 #create-msg {

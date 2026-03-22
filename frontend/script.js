@@ -23,8 +23,10 @@ function loadPolls() {
         var opts = Object.keys(poll.options);
         for (var j = 0; j < opts.length; j++) {
           var opt = opts[j];
-          html += "<input type='radio' name='poll_" + poll.id + "' value='" + opt + "'> ";
-          html += opt + " (" + poll.options[opt] + " votes)<br>";
+          html += "<div class='poll-option'>";
+          html += "<input type='radio' name='poll_" + poll.id + "' value='" + opt + "'>";
+          html += "<span>" + opt + " (" + poll.options[opt] + " votes)</span>";
+          html += "</div>";
         }
         html += "<br>";
         html += "<button onclick=\"submitVote('" + poll.id + "')\">Vote</button> ";
@@ -51,7 +53,7 @@ function createPoll() {
   })
     .then(function(res) { return res.json(); })
     .then(function(data) {
-      document.getElementById("create-msg").innerText = "Created! ID: " + data.id;
+      document.getElementById("create-msg").innerText = "Poll created!";
       document.getElementById("question").value = "";
       document.getElementById("options").value = "";
       loadPolls();
