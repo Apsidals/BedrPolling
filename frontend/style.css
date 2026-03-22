@@ -44,12 +44,7 @@ button:hover {
   max-width: 500px;
 }
 
-.poll-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0;
-}
+
 
 #create-msg {
   font-size: 0.85rem;
