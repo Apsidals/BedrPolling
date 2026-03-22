@@ -1,0 +1,86 @@
+var POLL_URL = "https://bedrpolling-git-848137945934.us-east4.run.app";
+var VOTE_URL = "https://bedrpolling-git-vote-848137945934.us-east4.run.app";
+var STATS_URL = "https://bedrpolling-git-stats-848137945934.europe-west1.run.app";
+
+function loadPolls() {
+  fetch(POLL_URL + "/polls")
+    .then(function(res) { return res.json(); })
+    .then(function(polls) {
+      var container = document.getElementById("polls");
+      container.innerHTML = "";
+
+      if (polls.length === 0) {
+        container.innerHTML = "<p>No polls yet.</p>";
+        return;
+      }
+
+      for (var i = 0; i < polls.length; i++) {
+        var poll = polls[i];
+        var div = document.createElement("div");
+        div.className = "poll-card";
+
+        var html = "<strong>" + poll.question + "</strong><br><br>";
+        var opts = Object.keys(poll.options);
+        for (var j = 0; j < opts.length; j++) {
+          var opt = opts[j];
+          html += "<input type='radio' name='poll_" + poll.id + "' value='" + opt + "'> ";
+          html += opt + " (" + poll.options[opt] + " votes)<br>";
+        }
+        html += "<br>";
+        html += "<button onclick=\"submitVote('" + poll.id + "')\">Vote</button> ";
+        html += "<button onclick=\"window.open('" + STATS_URL + "/stats/" + poll.id + "')\">Stats</button> ";
+        html += "<button onclick=\"deletePoll('" + poll.id + "')\">Delete</button>";
+
+        div.innerHTML = html;
+        container.appendChild(div);
+      }
+    });
+}
+
+function createPoll() {
+  var question = document.getElementById("question").value;
+  var options = document.getElementById("options").value.split(",");
+  for (var i = 0; i < options.length; i++) {
+    options[i] = options[i].trim();
+  }
+
+  fetch(POLL_URL + "/polls", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: question, options: options })
+  })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      document.getElementById("create-msg").innerText = "Created! ID: " + data.id;
+      document.getElementById("question").value = "";
+      document.getElementById("options").value = "";
+      loadPolls();
+    });
+}
+
+function submitVote(pollId) {
+  var radios = document.querySelectorAll("input[name='poll_" + pollId + "']");
+  var selected = null;
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      selected = radios[i].value;
+    }
+  }
+  if (!selected) {
+    alert("Pick an option first!");
+    return;
+  }
+  fetch(VOTE_URL + "/vote", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ poll_id: pollId, option: selected })
+  })
+    .then(function() { loadPolls(); });
+}
+
+function deletePoll(pollId) {
+  fetch(POLL_URL + "/polls/" + pollId, { method: "DELETE" })
+    .then(function() { loadPolls(); });
+}
+
+loadPolls();
