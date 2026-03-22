@@ -25,6 +25,7 @@
   <script>
     var POLL_URL = "https://bedrpolling-git-848137945934.us-east4.run.app";
     var VOTE_URL = "https://bedrpolling-git-vote-848137945934.us-east4.run.app";
+    var STATS_URL = "https://bedrpolling-git-stats-848137945934.europe-west1.run.app";
 
     function loadPolls() {
       fetch(POLL_URL + "/polls")
@@ -54,8 +55,9 @@
             }
             html += "<br>";
             html += "<button onclick=\"submitVote('" + poll.id + "')\">Vote</button> ";
+            html += "<button onclick=\"window.open('" + STATS_URL + "/stats/" + poll.id + "')\">Stats</button> ";
             html += "<button onclick=\"deletePoll('" + poll.id + "')\">Delete</button>";
-            html += "<button onclick=\"window.open('https://YOUR-STATS-URL.run.app/stats/" + poll.id + "')\">Stats</button>";
+
             div.innerHTML = html;
             container.appendChild(div);
           }
