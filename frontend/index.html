@@ -55,7 +55,7 @@
             html += "<br>";
             html += "<button onclick=\"submitVote('" + poll.id + "')\">Vote</button> ";
             html += "<button onclick=\"deletePoll('" + poll.id + "')\">Delete</button>";
-
+            html += "<button onclick=\"window.open('https://YOUR-STATS-URL.run.app/stats/" + poll.id + "')\">Stats</button>";
             div.innerHTML = html;
             container.appendChild(div);
           }
