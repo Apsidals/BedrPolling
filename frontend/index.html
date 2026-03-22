@@ -23,20 +23,11 @@
   <div id="polls"></div>
 
   <script>
-    var POLL_URL = "https://entertainedly-unprophetic-kenia.ngrok-free.dev";
-    var VOTE_URL = "https://entertainedly-unprophetic-kenia.ngrok-free.dev";
-
-    var HEADERS_GET = {
-      "ngrok-skip-browser-warning": "true"
-    };
-
-    var HEADERS_POST = {
-      "Content-Type": "application/json",
-      "ngrok-skip-browser-warning": "true"
-    };
+    var POLL_URL = "https://bedrpolling-git-848137945934.us-east4.run.app";
+    var VOTE_URL = "https://bedrpolling-git-vote-848137945934.us-east4.run.app";
 
     function loadPolls() {
-      fetch(POLL_URL + "/polls", { headers: HEADERS_GET })
+      fetch(POLL_URL + "/polls")
         .then(function(res) { return res.json(); })
         .then(function(polls) {
           var container = document.getElementById("polls");
@@ -80,7 +71,7 @@
 
       fetch(POLL_URL + "/polls", {
         method: "POST",
-        headers: HEADERS_POST,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: question, options: options })
       })
         .then(function(res) { return res.json(); })
@@ -106,17 +97,14 @@
       }
       fetch(VOTE_URL + "/vote", {
         method: "POST",
-        headers: HEADERS_POST,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ poll_id: pollId, option: selected })
       })
         .then(function() { loadPolls(); });
     }
 
     function deletePoll(pollId) {
-      fetch(POLL_URL + "/polls/" + pollId, {
-        method: "DELETE",
-        headers: HEADERS_GET
-      })
+      fetch(POLL_URL + "/polls/" + pollId, { method: "DELETE" })
         .then(function() { loadPolls(); });
     }
 
