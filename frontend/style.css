@@ -1,58 +1,19 @@
-	body {
+body {
   font-family: sans-serif;
   background: #f9f9f9;
   color: #222;
   margin: 0;
   padding: 30px;
-  background-color: #212121;
 }
 
-/************************************************/
-/*
-https://uiverse.io/biswacpcode/curvy-crab-71
-Copyright - 2026 biswacpcode (Biswajit Rout) 
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-
-h1{
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
 }
-
-h1::before {
-  margin-left: auto;
-}
-
-h1::after, h1:before {
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: #2979FF;
-  display: block;
-  transition: 0.5s;
-}
-
-h1:hover::after, h1:hover::before {
-  width: 100%;
-}
-/*********************************************/
-
 
 h2 {
   font-size: 1.1rem;
   margin-top: 24px;
-  color: white
 }
 
 input[type="text"], input:not([type="radio"]) {
