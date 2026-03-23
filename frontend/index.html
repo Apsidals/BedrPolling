@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Bedr Polling</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" /> <!-- connects to the css file -->
+  <script src="script.js" defer></script> <!-- connects to the js file -->
 </head>
 <body>
 
@@ -17,13 +17,13 @@
     <br>
     <input id="options" placeholder="Options separated by commas" />
     <br>
-    <button onclick="createPoll()">Create Poll</button>
+    <button onclick="createPoll()">Create Poll</button> <!-- when the button is clicked the function createPoll() runs to add the data to the database -->
     <p id="create-msg"></p>
 
     <hr>
 
     <h2>Polls</h2>
-    <button onclick="loadPolls()">Refresh</button>
+    <button onclick="loadPolls()">Refresh</button> <!-- when the button is clicked the function loadPolls() runs and reloads all of the pages so that the polls can show -->
     <div id="polls"></div>
 
   </div>
