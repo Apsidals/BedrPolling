@@ -50,3 +50,33 @@ button:hover {
   font-size: 0.85rem;
   color: green;
 }
+
+/* From Uiverse.io by biswacpcode */ 
+h1 {
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+
+}
+
+h1::before {
+  margin-left: auto;
+}
+
+h1::after, h1::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+h1:hover::after, h1:hover::before {
+  width: 100%;
+}
