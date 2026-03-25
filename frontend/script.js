@@ -2,33 +2,35 @@ var POLL_URL = "https://bedrpolling-git-848137945934.us-east4.run.app";
 var VOTE_URL = "https://bedrpolling-git-vote-848137945934.us-east4.run.app";
 var STATS_URL = "https://bedrpolling-git-stats-848137945934.europe-west1.run.app";
 
-function loadPolls() {
+function loadPolls() { // loads all of the polls that are created by the user
   fetch(POLL_URL + "/polls")
     .then(function(res) { return res.json(); })
     .then(function(polls) {
       var container = document.getElementById("polls");
       container.innerHTML = "";
 
-      if (polls.length === 0) {
+      if (polls.length === 0) { // checks if there are no polls in the database
         container.innerHTML = "<p>No polls yet.</p>";
         return;
       }
 
-      for (var i = 0; i < polls.length; i++) {
+      for (var i = 0; i < polls.length; i++) { // creates the poll "cards" that contains the question and response choices
         var poll = polls[i];
         var div = document.createElement("div");
         div.className = "poll-card";
 
-        var html = "<strong>" + poll.question + "</strong><br><br>";
+        var html = "<strong>" + poll.question + "</strong><br><br>"; // here the question is shown
         var opts = Object.keys(poll.options);
-        for (var j = 0; j < opts.length; j++) {
+        for (var j = 0; j < opts.length; j++) { // all of the options are pulled from the database and put into the webpage
           var opt = opts[j];
           html += "<div class='poll-option'>";
           html += "<input type='radio' name='poll_" + poll.id + "' value='" + opt + "'>";
           html += "<span>" + opt + " (" + poll.options[opt] + " votes)</span>";
           html += "</div>";
         }
-        html += "<br>";
+        
+        // creates all the buttons that go under the polls for additional functionality 
+        html += "<br>"; 
         html += "<button onclick=\"submitVote('" + poll.id + "')\">Vote</button> ";
         html += "<button onclick=\"window.open('" + STATS_URL + "/stats/" + poll.id + "')\">Stats</button> ";
         html += "<button onclick=\"deletePoll('" + poll.id + "')\">Delete</button>";
@@ -39,7 +41,7 @@ function loadPolls() {
     });
 }
 
-function createPoll() {
+function createPoll() { // creates the poll to be put in the database
   var question = document.getElementById("question").value;
   var options = document.getElementById("options").value.split(",");
   for (var i = 0; i < options.length; i++) {
@@ -60,7 +62,7 @@ function createPoll() {
     });
 }
 
-function submitVote(pollId) {
+function submitVote(pollId) { // allows the user to submit a vote and then appends the vote counter to the poll itself
   var radios = document.querySelectorAll("input[name='poll_" + pollId + "']");
   var selected = null;
   for (var i = 0; i < radios.length; i++) {
@@ -80,7 +82,7 @@ function submitVote(pollId) {
     .then(function() { loadPolls(); });
 }
 
-function deletePoll(pollId) {
+function deletePoll(pollId) { // deletes a poll
   fetch(POLL_URL + "/polls/" + pollId, { method: "DELETE" })
     .then(function() { loadPolls(); });
 }
