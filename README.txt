@@ -1,14 +1,14 @@
 ## Tools
-Software Used:
-Google Cloud
-Firebase
-# adsfasdfadsf
-## Languages:
-HTML
-JS
-CSS
-Python
-Dockerfile
+- Software Used:
+- Google Cloud
+- Firebase
+
+Languages:
+- HTML
+- JS
+- CSS
+- Python
+- Dockerfile
 
 Link to our website: [https://bedrpolling.web.app/](https://bedrpolling.web.app/)
 
