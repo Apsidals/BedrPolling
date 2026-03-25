@@ -3,6 +3,7 @@
 
 ## Case
 A startup is launching a new real-time mobile application (e.g., a high-volume polling/survey app or a real-time tracking service). It expects massive, unpredictable spikes in user traffic and needs to be highly resilient and cost-effective.
+
 Design a Cloud-Native solution heavily leveraging Containerization and Serverless or PaaS for maximum auto-scaling and minimal maintenance overhead. Include a plan for multiple expected growth scenarios, considering the volatility of the financial situations of startups.
 
 ## Tools
