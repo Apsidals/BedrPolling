@@ -8,6 +8,7 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+# all the database requirements
 cred_json = json.loads(os.environ.get("GOOGLE_CREDENTIALS"))
 cred = credentials.Certificate(cred_json)
 firebase_admin.initialize_app(cred)
@@ -15,7 +16,7 @@ db = firestore.client()
 
 
 @app.route("/vote", methods=["POST"])
-def vote():
+def vote(): # creates the voting system and appends the vote to the database
     data = request.json
     poll_id = data["poll_id"]
     option = data["option"]
