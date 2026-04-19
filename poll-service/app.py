@@ -8,12 +8,13 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+# sets up the intializations for the database
 cred_json = json.loads(os.environ.get("GOOGLE_CREDENTIALS"))
 cred = credentials.Certificate(cred_json)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-
+# retrives all of the polls from the database and turns it into a dictionary
 @app.route("/polls", methods=["GET"])
 def get_all_polls():
     polls = []
@@ -25,8 +26,8 @@ def get_all_polls():
 
 
 @app.route("/polls", methods=["POST"])
-def create_poll():
-    data = request.json
+def create_poll(): # creates the polls
+    data = request.json 
     question = data["question"]
     options = {}
     for opt in data["options"]:
