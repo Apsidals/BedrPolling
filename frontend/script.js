@@ -1,6 +1,6 @@
-var POLL_URL = "https://bedrpolling-git-848137945934.us-east4.run.app";
-var VOTE_URL = "https://bedrpolling-git-vote-848137945934.us-east4.run.app";
-var STATS_URL = "https://bedrpolling-git-stats-848137945934.europe-west1.run.app";
+var POLL_URL = "";
+var VOTE_URL = "";
+var STATS_URL = "";
 
 function loadPolls() { // loads all of the polls that are created by the user
   fetch(POLL_URL + "/polls")
