@@ -1,0 +1,24 @@
+services:
+  poll:
+    build: ./poll-service
+    ports:
+      - "5000:5000"
+    environment:
+      - GOOGLE_CREDENTIALS=${GOOGLE_CREDENTIALS}
+      - PORT=5000
+
+  vote:
+    build: ./vote-service
+    ports:
+      - "5001:5001"
+    environment:
+      - GOOGLE_CREDENTIALS=${GOOGLE_CREDENTIALS}
+      - PORT=5001
+
+  stats:
+    build: ./stats-service
+    ports:
+      - "5002:5002"
+    environment:
+      - GOOGLE_CREDENTIALS=${GOOGLE_CREDENTIALS}
+      - PORT=5002
